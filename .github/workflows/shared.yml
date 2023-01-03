@@ -15,7 +15,7 @@ on:
         value: ${{ env.my-version }}
 
 env:
-  my-version: 1.2.3      
+  my-version: '1.2.3'      
 
 jobs:
   example_job:
