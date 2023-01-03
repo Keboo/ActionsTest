@@ -7,7 +7,7 @@ on:
 
 jobs:
   job1:
-    uses: Keboo/ActionsTest/.github/workflows/shared/shared.yml@main
+    uses: Keboo/ActionsTest/.github/workflows/shared.yml@main
 
   job2:
     runs-on: ubuntu-latest
