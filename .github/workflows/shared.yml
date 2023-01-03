@@ -2,6 +2,11 @@ name: Reusable workflow
 
 on:
   workflow_call:
+    inputs:
+      is-foo:
+        required: false
+        default: 'bar'
+
     # Map the workflow outputs to job outputs
     outputs:
       firstword:
@@ -12,7 +17,7 @@ on:
         value: ${{ jobs.example_job.outputs.output2 }}
       my-version:
         description: "Version number"
-        value: '1.2.3'
+        value: '1.2.3 ${{ inputs.is-foo }}'
       
 
 jobs:

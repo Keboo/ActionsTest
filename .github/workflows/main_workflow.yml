@@ -17,3 +17,8 @@ jobs:
       - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
       - run: echo ${{ needs.job1.outputs.my-version }}
 
+  job3:
+    name: 'Test Name'
+    uses: ./.github/workflows/shared.yml
+    with:
+      is-foo: true
