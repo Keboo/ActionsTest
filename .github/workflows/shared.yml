@@ -33,7 +33,7 @@ jobs:
     outputs:
       output1: ${{ steps.step1.outputs.firstword }}
       output2: ${{ steps.step2.outputs.secondword }}
-      my-version: ${{ stpes.output_version.my-version}}
+      my-version: ${{ steps.output_version.my-version}}
     steps:
       - id: step1
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
