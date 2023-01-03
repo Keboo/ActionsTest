@@ -22,8 +22,8 @@ jobs:
       shell: pwsh
       run: |
         $hasChanged = ($true).ToString().ToLower()
-        echo "Has updates $hasChanged"
-        echo "has_changed=$hasChanged" >> $GITHUB_OUTPUT
+        echo "has_changed=x$hasChangedx"
+        echo "has_changed=x$hasChangedx" >> $GITHUB_OUTPUT
 
   test:
     needs: check_for_changes
