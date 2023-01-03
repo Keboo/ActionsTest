@@ -14,5 +14,5 @@ jobs:
     needs: job1
     steps:
       - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
-      - run: echo ${{ env.my_version }}
+      - run: echo ${{ needs.job1.outputs.my-version }}
 
