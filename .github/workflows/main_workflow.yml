@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      should_run: 'Foo'
+      should_run: ${{ steps.check_tag.outputs.has_changed }}
+      color: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
 
     steps:
     - uses: actions/checkout@v3
@@ -24,7 +25,15 @@ jobs:
         $hasChanged = ($true).ToString().ToLower()
         echo "has_changed=x$hasChangedx"
         echo "has_changed=x$hasChanged" >> $GITHUB_OUTPUT
-        echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+
+    - name: Set color
+      id: random-color-generator
+      run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+
+    - name: Get color
+      run: |
+        echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+        echo "Has changed ${{ steps.check_tag.outputs.has_changed }}"
 
   test:
     needs: check_for_changes
@@ -33,6 +42,7 @@ jobs:
     - name: Test
       run: |
         echo "Test ${{ needs.check_for_changes.outputs.should_run }}"
+        echo "Test ${{ needs.check_for_changes.outputs.color }}"
 
   job1:
     name: 'Test Name'
