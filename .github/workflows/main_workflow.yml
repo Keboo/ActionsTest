@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      should_run: ${{ steps.check_tag.outputs.has_changed }}
+      should_run: 'Foo'
 
     steps:
     - uses: actions/checkout@v3
@@ -23,7 +23,8 @@ jobs:
       run: |
         $hasChanged = ($true).ToString().ToLower()
         echo "has_changed=x$hasChangedx"
-        echo "has_changed=x$hasChangedx" >> $GITHUB_OUTPUT
+        echo "has_changed=x$hasChanged" >> $GITHUB_OUTPUT
+        echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
 
   test:
     needs: check_for_changes
