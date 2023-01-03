@@ -18,16 +18,17 @@ jobs:
       with:
         fetch-depth: 0
 
-    - id: check_tag
-      name: Check nightly_release tag
+    - name: Check nightly_release tag
+      id: check_tag
       shell: pwsh
       run: |
         $hasChanged = ($true).ToString().ToLower()
-        echo "has_changed=x$hasChangedx"
+        echo "has_changed=x$hasChanged"
         echo "has_changed=x$hasChanged" >> $GITHUB_OUTPUT
 
     - name: Set color
       id: random-color-generator
+      shell: pwsh
       run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
 
     - name: Get color
