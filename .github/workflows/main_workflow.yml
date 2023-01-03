@@ -23,13 +23,13 @@ jobs:
       shell: pwsh
       run: |
         $hasChanged = ($true).ToString().ToLower()
-        echo "has_changed=x$hasChanged"
-        echo "has_changed=x$hasChanged" >> $GITHUB_OUTPUT
+        echo "has_changed=$hasChanged"
+        "has_changed=$hasChanged" >> $env:GITHUB_OUTPUT
 
     - name: Set color
       id: random-color-generator
       shell: pwsh
-      run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+      run: "SELECTED_COLOR=green" >> $env:GITHUB_OUTPUT
 
     - name: Get color
       run: |
