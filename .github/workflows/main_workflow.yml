@@ -23,6 +23,7 @@ jobs:
       - run: echo ${{ needs.job1.outputs.my-version }}
       - run: echo ${{ needs.job1.outputs.my-version2 }}
       - run: echo ${{ needs.job3.outputs.my-version }}
+      - run: echo ${{ needs.job3.outputs.my-version2 }}
       
 
 
