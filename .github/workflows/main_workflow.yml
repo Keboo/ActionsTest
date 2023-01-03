@@ -19,6 +19,7 @@ jobs:
 
     - id: check_tag
       name: Check nightly_release tag
+      shell: pwsh
       run: |
         $hasChanged = ($true).ToString().ToLower()
         echo "Has updates $hasChanged"
@@ -31,7 +32,7 @@ jobs:
     - name: Test
       run: |
         echo "Test ${{ needs.check_for_changes.outputs.should_run }}"
-        
+
   job1:
     name: 'Test Name'
     uses: ./.github/workflows/shared.yml
