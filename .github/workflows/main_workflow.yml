@@ -29,7 +29,8 @@ jobs:
     - name: Set color
       id: random-color-generator
       shell: pwsh
-      run: "SELECTED_COLOR=green" >> $env:GITHUB_OUTPUT
+      run: |
+        "SELECTED_COLOR=green" >> $env:GITHUB_OUTPUT
 
     - name: Get color
       run: |
