@@ -6,6 +6,32 @@ on:
       - main
 
 jobs:
+  check_for_changes:
+    runs-on: ubuntu-latest
+
+    outputs:
+      should_run: ${{ steps.check_tag.outputs.has_changed }}
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - id: check_tag
+      name: Check nightly_release tag
+      run: |
+        $hasChanged = ($true).ToString().ToLower()
+        echo "Has updates $hasChanged"
+        echo "has_changed=$hasChanged" >> $GITHUB_OUTPUT
+
+  test:
+    needs: check_for_changes
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test
+      run: |
+        echo "Test ${{ needs.check_for_changes.outputs.should_run }}"
+        
   job1:
     name: 'Test Name'
     uses: ./.github/workflows/shared.yml
