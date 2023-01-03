@@ -26,7 +26,7 @@ on:
 jobs:
   example_job:
     env:
-      version: "1.2.3"
+      version: "3.2.1"
     name: Generate output
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
@@ -41,7 +41,7 @@ jobs:
         run: echo "secondword=world" >> $GITHUB_OUTPUT
       - id: set_version
         if: ${{ inputs.is-foo }}
-        run: echo "version=3.2.1-ci" >> $GITHUB_ENV
+        run: echo "version=${{ env.version }}-ci" >> $GITHUB_ENV
       - id: output_version
         run: |
           echo $version
