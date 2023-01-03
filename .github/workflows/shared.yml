@@ -45,4 +45,4 @@ jobs:
       - id: output_version
         run: |
           echo ${{ env.version }}
-          echo "my-version=$version" >> $GITHUB_OUTPUT
+          echo "my-version=${{ en.version }}" >> $GITHUB_OUTPUT
