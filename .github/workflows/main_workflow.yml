@@ -1,0 +1,17 @@
+name: Call a reusable workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    uses: Keboo/ActionsTest/.github/shared/shared.yml@main
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
+
