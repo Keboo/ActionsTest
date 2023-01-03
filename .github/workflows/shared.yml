@@ -19,18 +19,29 @@ on:
       my-version:
         description: "Version number"
         value: '1.2.3 ${{ inputs.is-foo }}'
+      my-version2:
+        value: ${{ jobs.example_job.outputs.my-version }}
       
 
 jobs:
   example_job:
+    env:
+      version: "1.2.3"
     name: Generate output
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
     outputs:
       output1: ${{ steps.step1.outputs.firstword }}
       output2: ${{ steps.step2.outputs.secondword }}
+      my-version: ${{ stpes.output_version.my-version}}
     steps:
       - id: step1
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
       - id: step2
         run: echo "secondword=world" >> $GITHUB_OUTPUT
+      - id: set_version
+        run: echo "version=3.2.1-ci" >> $GITHUB_ENV
+      - id: output_version
+        run: |
+          echo $version
+          echo "my-version=$version" >> $GITHUB_OUTPUT
