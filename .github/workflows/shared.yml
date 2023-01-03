@@ -12,10 +12,8 @@ on:
         value: ${{ jobs.example_job.outputs.output2 }}
       my-version:
         description: "Version number"
-        value: ${{ env.my-version }}
-
-env:
-  my-version: '1.2.3'      
+        value: '1.2.3'
+      
 
 jobs:
   example_job:
