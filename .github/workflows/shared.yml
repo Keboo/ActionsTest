@@ -5,7 +5,8 @@ on:
     inputs:
       is-foo:
         required: false
-        default: 'bar'
+        type: boolean
+        default: false
 
     # Map the workflow outputs to job outputs
     outputs:
